@@ -2,26 +2,26 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: http://mazhuang.org
+url: http://xflovemoney.github.io
 date_format: "ordinal"
-title: 码志
-subtitle: "打码改变人生"
-description: "马壮的个人博客"
-keywords: 码志, Zhuang Ma, mzlogin, mazhuang
+title: xf
+subtitle: "山不在高 立足就好"
+description: "xf的个人博客"
+keywords: xflovemoney
 favicon: /favicon.ico
-timezone: Asia/Shanghai
+timezone: Asia/BeiJing
 encoding: "utf-8"
 side_bar_repo_limit: 5
 
 # ---------------- #
 #      Author      #
 # ---------------- #
-author: Zhuang Ma
-organization: zkh360.com
-organization_url: http://www.zkh360.com
-github_username: mzlogin
-location: Wuhan, China
-email: chumpma@gmail.com
+author: Xf
+organization: xflovemoney.github.com
+organization_url: http://xflovemoney.github.com
+github_username: xflovemoney
+location: BeiJing, China
+email: 85443682@qq.com
 
 # ---------------- #
 #    Navigation    #
@@ -87,7 +87,7 @@ repository: mzlogin/mzlogin.github.io
 comments_provider: netease_gentie
 # !!!重要!!! 请修改下面这些信息为你自己申请的
 # !!!Important!!! Please modify infos below to yours
-disqus_username: mzlogin
+disqus_username: xflovemoney
 netease_gentie_key: 560ed243b708465d82d5a0a5f3b83da1
 # 在使用网易云跟帖时可点击显示 Disqus
 lazy_load_disqus : true
