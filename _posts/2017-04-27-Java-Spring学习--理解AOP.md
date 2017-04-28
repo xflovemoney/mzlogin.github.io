@@ -19,7 +19,7 @@ AOP 主要是利用代理模式的技术来实现的。
 
 a、业务接口
 
-```Java
+```java
  /**
   * 抽象主题角色：声明了真实主题和代理主题的共同接口。
   * 
@@ -34,7 +34,7 @@ a、业务接口
  ```
 b、业务实现
 
-```Java
+```java
 /**
  * 真实主题角色：定义真实的对象。
  * 
@@ -75,7 +75,7 @@ public class PeopleTalk implements ITalk {
 ```
 c、代理对象
 
-```Java
+```java
 /**
  * 代理主题角色：内部包含对真实主题的引用，并且提供和真实主题角色相同的接口。
  * 
@@ -108,7 +108,7 @@ public class TalkProxy implements ITalk {
 ```
 d、测试类
 
-```Java
+```java
 /**
  * 代理测试类，使用代理
  *
@@ -142,7 +142,7 @@ public class ProxyPattern {
 
 a、代理类：
 
-```Java
+```java
 /**
  * 动态代理类
  * 
@@ -189,7 +189,7 @@ public class DynamicProxy implements InvocationHandler {
 ```
 b、测试类
 
-```Java
+```java
 /**
  * 测试类
  * 
@@ -222,7 +222,7 @@ public class Test {
 CGLIB是针对类来实现代理的，他的原理是对指定的目标类生成一个子类，并覆盖其中方法实现增强。采用的是继承的方式。不细说，看使用
 
 a、业务类
-```Java
+```java
 /**
  * 业务类
  * 
@@ -239,7 +239,7 @@ public class PeopleTalk {
 ```
 b、cglib代理类
 
-```Java
+```java
 /**
  * 使用cglib动态代理
  * 
@@ -279,7 +279,7 @@ public class CglibProxy implements MethodInterceptor {
 ```
 c.测试类
 
-```Java
+```java
 /**
  * 测试类
  * 
