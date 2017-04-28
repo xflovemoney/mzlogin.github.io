@@ -1,3 +1,12 @@
+---
+layout: post
+title: Java Spring学习 理解aop
+categories: Java
+description: Spring
+keywords: Java
+---
+
+
 Aspect Oriented Programming  面向切面编程。解耦是程序员编码开发过程中一直追求的。AOP也是为了解耦所诞生。
 
     具体思想是：定义一个切面，在切面的纵向定义处理方法，处理完成之后，回到横向业务流。
