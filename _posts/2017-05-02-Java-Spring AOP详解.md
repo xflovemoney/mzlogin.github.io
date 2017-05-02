@@ -18,9 +18,11 @@ OOP引入封装、继承、多态等概念来建立一种对象层次结构，�
 ### AOP核心概念
 
 1. 横切关注点
+
 对哪些方法进行拦截，拦截后怎么处理，这些关注点称之为横切关注点
 
 2. 切面（aspect）
+
 类是对物体特征的抽象，切面就是对横切关注点的抽象
 
 3. 连接点（joinpoint）
@@ -37,15 +39,15 @@ OOP引入封装、继承、多态等概念来建立一种对象层次结构，�
 
 6. 目标对象
 
- 代理的目标对象
+代理的目标对象
 
 7. 织入（weave）
 
- 将切面应用到目标对象并导致代理对象创建的过程
+将切面应用到目标对象并导致代理对象创建的过程
 
 8. 引入（introduction）
 
- 在不修改代码的前提下，引入可以在运行期为类动态地添加一些方法或字段
+在不修改代码的前提下，引入可以在运行期为类动态地添加一些方法或字段
  
  
 ### Spring对AOP的支持
@@ -220,7 +222,9 @@ public class LogHandler
         System.out.println("Log after method");
     }
 }
-
+```
+####
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
