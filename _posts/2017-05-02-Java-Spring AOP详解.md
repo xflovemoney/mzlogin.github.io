@@ -6,7 +6,7 @@ description: Spring
 keywords: Java
 ---
 
- ### AOP
+### AOP
 
 > AOP（Aspect Oriented Programming），即面向切面编程，可以说是OOP（Object Oriented Programming，面向对象编程）的补充和完善。
 OOP引入封装、继承、多态等概念来建立一种对象层次结构，用于模拟公共行为的一个集合。
@@ -71,7 +71,7 @@ AOP编程其实是很简单的事情，纵观AOP编程，程序员只需要参�
 所以进行AOP编程的关键就是定义切入点和定义增强处理，一旦定义了合适的切入点和增强处理，AOP框架将自动生成AOP代理，即：代理对象的方法=增强处理+被代理对象的方法。
 
 下面给出一个Spring AOP的.xml文件模板，名字叫做aop.xml，之后的内容都在aop.xml上进行扩展：
-```Xml
+```xml
  <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -94,7 +94,7 @@ AOP编程其实是很简单的事情，纵观AOP编程，程序员只需要参�
 2. aspectjweaver.jar
 
 开始讲解用Spring AOP的XML实现方式，先定义一个接口：
-```Java
+```java
 public interface HelloWorld
 {
     void printHelloWorld();
@@ -102,7 +102,7 @@ public interface HelloWorld
 }
 ```
 定义两个接口实现类：
-```Java
+```java
 public class HelloWorldImpl1 implements HelloWorld
 {
     public void printHelloWorld()
@@ -131,7 +131,7 @@ public class HelloWorldImpl2 implements HelloWorld
 }
 ```
 横切关注点，这里是打印时间：
-```Java
+```java
 public class TimeHandler
 {
     public void printTime()
@@ -142,7 +142,7 @@ public class TimeHandler
 ```
 
 有这三个类就可以实现一个简单的Spring AOP了，看一下aop.xml的配置：
-```Xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -168,7 +168,7 @@ public class TimeHandler
 ```
  
 写一个main函数调用一下：
-```Java
+```java
 public static void main(String[] args)
 {
     ApplicationContext ctx = 
@@ -187,7 +187,7 @@ public static void main(String[] args)
 }
 ```
 运行结果为：
-```Java
+```java
 CurrentTime = 1446129611993
 Enter HelloWorldImpl1.printHelloWorld()
 CurrentTime = 1446129611993
@@ -210,7 +210,7 @@ CurrentTime = 1446129611994
  ### 基于Spring的AOP使用其他细节
 
 1. 增加一个横切关注点，打印日志，Java类为：
-```Java
+```java
 public class LogHandler
 {
     public void LogBefore()
@@ -224,7 +224,7 @@ public class LogHandler
     }
 }
 ```
-```Xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -255,7 +255,7 @@ public class LogHandler
 </beans>
 ```
 测试类不变，打印结果为：
-```Java
+```java
 CurrentTime = 1446130273734
 Log before method
 Enter HelloWorldImpl1.printHelloWorld()
@@ -289,7 +289,7 @@ CurrentTime = 1446130273737
 2. 我只想织入接口中的某些方法
 
 修改一下pointcut的expression就好了：
-```Java
+```java
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
