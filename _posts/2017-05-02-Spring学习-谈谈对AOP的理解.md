@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Java-Spring学习-谈谈对AOP的理解 一——认识AOP
+title: 谈谈对AOP的理解 一——认识AOP
 categories: Java
 description: Spring
-keywords: Java
+keywords: Spring
 ---
 
  前几篇博客我们说了JAVA的代理模式，从静态代理到动态代理，又到CGLIB代理。从静态代理到动态代理是一种进步，JDK的动态代理和CGLIB的代理，却是各有优缺点，在使用过程中，不是非要决出个胜负，根据不同的情景，使用不同的代理；也可以根据情况，两者结合使用，代码是我们写出来的，我们才是创造者，知其然，知其所以然，然可用之。

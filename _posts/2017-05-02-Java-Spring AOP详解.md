@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Java学习-Spring AOP详解
+title: Spring AOP详解
 categories: Java
 description: Spring
-keywords: Java
+keywords: Spring
 ---
 
 
