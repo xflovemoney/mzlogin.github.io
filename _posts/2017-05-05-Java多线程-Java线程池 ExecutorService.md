@@ -6,7 +6,7 @@ description: Java,多线程
 keywords: Java,多线程
 ---
 
-**** 本篇主要涉及到的是java.util.concurrent包中的ExecutorService。ExecutorService就是Java中对线程池的实现。
+    本篇主要涉及到的是java.util.concurrent包中的ExecutorService。ExecutorService就是Java中对线程池的实现。
 
 ### 一、ExecutorService介绍
 
