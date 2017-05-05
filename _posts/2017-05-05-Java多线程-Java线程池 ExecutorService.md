@@ -31,7 +31,7 @@ Java API对ExecutorService接口的实现有两个，所以这两个即是Java�
 3. newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。
 4. newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
 
-**** 备注：Executors只是一个工厂类，它所有的方法返回的都是ThreadPoolExecutor、ScheduledThreadPoolExecutor这两个类的实例。
+    备注：Executors只是一个工厂类，它所有的方法返回的都是ThreadPoolExecutor、ScheduledThreadPoolExecutor这两个类的实例。
 
 ### 三、ExecutorService的使用
 ```java
