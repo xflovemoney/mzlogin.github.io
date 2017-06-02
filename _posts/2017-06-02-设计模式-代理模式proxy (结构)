@@ -1,0 +1,185 @@
+---
+layout: post
+title: 设计模式-代理模式proxy (结构)
+categories: 设计模式
+description: 设计模式
+keywords: 设计模式
+---
+
+### 概述
+
+代理模式：为其他对象提供一种代理以控制对这个对象的访问。
+给某个对象提供一个代理对象，并由代理对象控制对于原对象的访问，即客户不直接操控原对象，而是通过代理对象间接地操控原对象。
+
+### 想象场景？
+
+因为某个对象消耗太多资源,而且你的代码并不是每个逻辑路径都需要此对象, 你曾有过延迟创建对象的想法吗 ( if和else就是不同的两条逻辑路径) ?   
+你有想过限制访问某个对象,也就是说,提供一组方法给普通用户,特别方法给管理员用户?  
+以上两种需求都非常类似，并且都需要解决一个更大的问题:你如何提供一致的接口给某个对象让它可以改变其内部功能,或者是从来不存在的功能?   
+可以通过引入一个新的对象，来实现对真实对象的操作或者将新的对象作为真实对象的一个替身。即代理对象。它可以在客户端和目标对象之间起到中介的作用，并且可以通过代理对象去掉客户不能看到的内容和服务或者添加客户需要的额外服务。  
+
+### 经典例子
+
+    *经典例子就是网络代理，你想访问facebook或者twitter ，如何绕过GFW，找个代理网站。
+
+    *可以调用远程代理处理一些操作如图：
+    
+    ![](https://xflovemoney.github.io/images/blog/1336449099_9165.png)
+    
+    *比如数据库连接池中创建了一系列连接， 为了保证不频繁的打开连接，这些连接是几乎不会关闭的。
+然而我们编程总有习惯去将打开的Connection去close。 这样我们就可以利用代理模式来重新代理Connection接口中的close方法， 改变为回收到数据库连接池中而不是真正的执行Connection#close方法
+
+    ![](https://xflovemoney.github.io/images/blog/342342232332.png)
+    
+### 解决方案
+    
+    代理模式: 为其他对象提供一种代理，并以控制对这个对象的访问。（Provide asurrogate or placeholder foranother object tocontrol access to it. ）而对一个对象进行访问控制的一个原因是为了只有在我们确实需要这个对象时才对它进行创建和初始化。它是给某一个对象提供一个替代者(占位者),使之在client对象和subject对象之间编码更有效率。代理可以提供延迟实例化(lazy instantiation),控制访问, 等等，包括只在调用中传递。 一个处理纯本地资源的代理有时被称作虚拟代理。远程服务的代理常常称为远程代理。强制 控制访问的代理称为保护代理。
+
+### 实用性
+
+  在需要用比较通用和复杂的对象指针代替简单的指针的时候，使用 Proxy模式。下面是一些可以使用Proxy模式常见情况：
+1.远程代理（Remote  Proxy）为一个位于不同的地址空间的对象提供一个本地的代理对象。这个不同的地址空间可以是在同一台主机中，也可是在另一台主机中，远程代理又叫做大使(Ambassador)
+* 虚拟代理（Virtual Proxy）根据需要创建开销很大的对象。如果需要创建一个资源消耗较大的对象，先创建一个消耗相对较小的对象来表示，真实对象只在需要时才会被真正创建。 
+* 保护代理（Protection Proxy）控制对原始对象的访问。保护代理用于对象应该有不同的访问权限的时候。
+* 智能指引（Smart Reference）取代了简单的指针，它在访问对象时执行一些附加操作。
+* Copy-on-Write代理：它是虚拟代理的一种，把复制（克隆）操作延迟到只有在客户端真正需要时才执行。一般来说，对象的深克隆是一个开销较大的操作，Copy-on-Write代理可以让这个操作延迟，只有对象被用到的时候才被克隆。
+
+### 结构 UML
+
+    ![](https://xflovemoney.github.io/images/blog/1336371130_8874.jpeg)
+    
+    简单结构示意图：
+    
+    ![](https://xflovemoney.github.io/images/blog/1336453143_5004.jpeg)
+    
+### 模式的组成
+
+    1)代理角色(Proxy):
+
+    . 保存一个引用使得代理可以访问实体。若 RealSubject和Subject的接口相同，Proxy会引用Subject。
+
+    . 提供一个与Subject的接口相同的接口，这样代理就可以用来替代实体。
+
+    . 控制对实体的存取，并可能负责创建和删除它。
+
+    . 其他功能依赖于代理的类型：
+
+    • Remote Proxy负责对请求及其参数进行编码，并向不同地址空间中的实体发送已编码的请求。
+
+    • Virtual Proxy可以缓存实体的附加信息，以便延迟对它的访问。
+
+    • Protection Proxy检查调用者是否具有实现一个请求所必需的访问权限。
+
+    2) 抽象主题角色(Subject):定义真实主题角色RealSubject
+     和 抽象主题角色Proxy的共用接口，这样就在任何使用RealSubject的地方都可以使
+
+    用Proxy。代理主题通过持有真实主题RealSubject的引用,不但可以控制真实主题RealSubject的创建或删除,可以在真实主题RealSubject被调用前进行拦截,或在调用后进行某些操作. 
+
+    3) 真实主题角色(RealSubject):定义了代理角色(proxy)所代表的具体对象. 
+    
+    
+### 优缺点
+
+*  对修改关闭，对扩展开放原则
+*  代理模式能够协调调用者和被调用者，在一定程度上降低了系统的耦合度。（延伸出来的动态代理和AOP进一步降低耦合度）
+
+*  由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢。
+*  实现代理模式需要额外的工作，有些代理模式的实现非常复杂。 
+*  要实现代理方式必须定义接口（同时也是JDK动态代理的缺点）
+
+
+### 代码
+
+Subject
+```java
+package com.mystudy.proxy;
+
+/**
+ * Created by litf on 2017/6/1.
+ */
+public interface Subject {
+    String Request();
+}
+```
+RealSubject
+```java
+package com.mystudy.proxy;
+
+/**
+ * Created by litf on 2017/6/1.
+ */
+public class RealSubject implements Subject {
+    private String theme;
+    public RealSubject(String theme){
+        this.theme = theme;
+    }
+    @Override
+    public String Request() {
+        return theme;
+    }
+}
+```
+Proxy
+```java
+package com.mystudy.proxy;
+
+/**
+ * Created by litf on 2017/6/1.
+ */
+public class Proxy implements Subject {
+
+    private Subject subject;
+    public Proxy(Subject subject){
+        this.subject = subject;
+    }
+    @Override
+    public String Request() {
+        System.out.println("this is Proxy!");
+        return subject.Request();
+    }
+}
+```
+
+Client
+```java
+package com.mystudy.proxy;
+
+/**
+ * Created by litf on 2017/6/1.
+ */
+public class Client {
+
+    public static void main(String[] args){
+        RealSubject realSubject = new RealSubject("this is theme");
+
+        Subject subject = new Proxy(realSubject);
+
+        System.out.println(subject.Request());
+    }
+}
+```
+
+### 与其他相关模式
+
+    1）适配器模式Adapter
+    ：适配器Adapter 为它所适配的对象提供了一个不同的接口。相反，代理提供了与它的实体相同的接口。然而，用于访问保护的代理可能会拒绝执行实体会执行的操作，因此，它的接口实际上可能只是实体接口的一个子集。
+
+    2) 装饰器模式Decorator：尽管Decorator的实现部分与代理相似，但
+     Decorator的目的不一样。Decorator为对象添加一个或多个功能，而代理则控制对对象的访问。
+
+### 总结
+
+代理模式在很多情况下都非常有用,特别是你想强行控制一个对象的时候,比如:延迟加载,监视状态变更的方法等等
+
+  1.“增加一层间接层”是软件系统中对许多负责问题的一种常见解决方法。在面向对象系统中，直接使用某些对象会带来很多问题，作为间接层的proxy对象便是解决这一问题的常用手段。
+
+  * 具体proxy设计模式的实现方法、实现粒度都相差很大，有些可能对单个对象作细粒度的控制，有些可能对组件模块提供抽象代理层，在架构层次对对象作proxy。
+
+  * proxy并不一定要求保持接口的一致性，只要能够实现间接控制，有时候损及一些透明性是可以接受的。例如上面的那个例子，代理类型ProxyClass和被代理类型LongDistanceClass可以不用继承自同一个接口，正像GoF《设计模式》中说的：为其他对象提供一种代理以控制这个对象的访问。代理类型从某种角度上讲也可以起到控制被代理类型的访问的作用。
+
+
+
+
+
+    
+
