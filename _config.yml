@@ -78,7 +78,7 @@ collections:
         output: true
         permalink: /wiki/:path/
 
-repository: mzlogin/mzlogin.github.io
+repository: xflovemoney/xflovemoney.github.io
 
 # ---------------- #
 #      Comments    #
