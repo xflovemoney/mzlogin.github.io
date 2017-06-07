@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 使用wait()和notifyAll()方法自定义线程池
-categories: Java
-description: Java线程
-keywords: Java线程
+categories: Java,多线程
+description: Java,多线程
+keywords: Java,多线程
 ---
 
 ### 声明：
