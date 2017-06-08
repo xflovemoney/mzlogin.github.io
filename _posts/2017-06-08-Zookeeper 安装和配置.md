@@ -9,7 +9,8 @@ keywords: 分布式
 Zookeeper的安装和配置十分简单, 既可以配置成单机模式, 也可以配置成集群模式. 下面将分别进行介绍.
 
 ### 单机模式
-点击这里下载zookeeper的安装包之后, 解压到合适目录. 进入zookeeper目录下的conf子目录, 创建zoo.cfg:
+
+[点击这里下载](http://zookeeper.apache.org/releases.html)zookeeper的安装包之后, 解压到合适目录. 进入zookeeper目录下的conf子目录, 创建zoo.cfg:
 ```java
 tickTime=2000    
 dataDir=/Users/apple/zookeeper/data    
