@@ -5,6 +5,8 @@ categories: 分布式
 description: 分布式
 keywords: 分布式
 ---
+jar 依赖包
+http://download.csdn.net/download/alexander_zhou/9192011
 
 1、Producer端
 
