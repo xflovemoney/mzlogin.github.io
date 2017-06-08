@@ -92,8 +92,9 @@ public void method(){ try{
 lock.lock();//加锁
 }finally{ lock.unlock();//释放锁
 } }
-
-//可重入锁，公平锁  
+```
+* 可重入锁，公平锁
+```java  
 private Lock lock = new ReentrantLock(true);
 public void waitMethod(){ try{
 //在3秒内尝试获取锁
