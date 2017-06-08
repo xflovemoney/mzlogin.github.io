@@ -50,7 +50,7 @@ JVM会保证有序性。
 
 
 #### 使用ReentrantLock保证同步
-* 可重入锁ReentrantLock常用API    
+* 可重入锁ReentrantLock常用API  
 ```public void lock()```  
 加锁，如果有别的线程获取了锁，则等待  
 ```public void unlock()```  
