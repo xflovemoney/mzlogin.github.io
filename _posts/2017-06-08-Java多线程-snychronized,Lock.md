@@ -131,8 +131,9 @@ private final Lock readLock = lock.readLock();
 public void readMethod(){ try{
 readLock.lock();//读锁 }finally{
   } }
-  
-可重入读写锁ReentrantReadWriteLock的使用
+```  
+#### 可重入读写锁ReentrantReadWriteLock的使用
+```java
 //可重入读写锁，公平锁
 private ReadWriteLock lock = new ReentrantReadWriteLock(true);
 //写锁
