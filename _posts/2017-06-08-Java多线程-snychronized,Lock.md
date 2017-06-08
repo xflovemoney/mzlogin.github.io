@@ -50,25 +50,25 @@ JVM会保证有序性。
 
 
 #### 使用ReentrantLock保证同步
-* 可重入锁ReentrantLock常用API
-```public void lock()```
- 加锁，如果有别的线程获取了锁，则等待
-```public void unlock()```
-释放锁
-```public final boolean isFair()```
-判断该锁是否为公平锁
-```public boolean tryLock()```
-如果该锁未被别的线程占用，则加锁
-```public boolean tryLock(long timeout, TimeUnit unit) throws InterruptedException```
- 在指定等待时间内，该锁未被别的线程占用，则加锁
+* 可重入锁ReentrantLock常用API  
+```public void lock()```  
+加锁，如果有别的线程获取了锁，则等待  
+```public void unlock()```  
+释放锁  
+```public final boolean isFair()```  
+判断该锁是否为公平锁  
+```public boolean tryLock()```  
+如果该锁未被别的线程占用，则加锁  
+```public boolean tryLock(long timeout, TimeUnit unit) throws InterruptedException```  
+ 在指定等待时间内，该锁未被别的线程占用，则加锁  
  
 * 可重入锁ReentrantLock构造函数
-```public ReentrantLock()```
-构造可重入锁ReentrantLock对象，该锁为非公平锁
-```public ReentrantLock(boolean fair)```
-构造可重入锁ReentrantLock对象 如果fair为true,则该锁为公平锁 如果fair为false,则该锁为非公平锁
-ReentrantLock锁具有完成互斥排他的效果，即同一时间只有一个线程 在执行lock()后面的任务，通过unlock()释放锁，故保证了线程安全。
-ReentrantLock是一种乐观锁。
+```public ReentrantLock()```  
+构造可重入锁ReentrantLock对象，该锁为非公平锁  
+```public ReentrantLock(boolean fair)```  
+构造可重入锁ReentrantLock对象 如果fair为true,则该锁为公平锁 如果fair为false,则该锁为非公平锁  
+ReentrantLock锁具有完成互斥排他的效果，即同一时间只有一个线程 在执行lock()后面的任务，通过unlock()释放锁，故保证了线程安全。  
+ReentrantLock是一种乐观锁。  
 
 * 可重入锁ReentrantLock使用
 ```java
