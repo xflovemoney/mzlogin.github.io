@@ -66,19 +66,12 @@ i = 2;        //在线程C中执行
 
 
 1. 程序次序规则（Program Order Rule） 在一个线程内，按照程序代码顺序，书写在前面的操作Happens-Before书写在后面的操作
-
 * 管程锁定规则（Monitor Lock Rule） An unlock on a monitor happens-before every subsequent lock on that monitor. 一个unlock操作Happens-Before后面对同一个锁的lock操作。
-
 * volatile变量规则（volatile Variable Rule） A write to a volatile field happens-before every subsequent read of that volatile. 对一个volatile变量的写入操作Happens-Before后面对这个变量的读操作。
-
 * 线程启动规则（Thread Start Rule） Thread对象的start()方法Happens-Before此线程的每一个动作。
-
 * 线程终止规则（Thread Termination Rule） 线程中的所有操作都Happens-Before对此线程的终止检测。
-
 * 线程中断规则（Thread Interruption Rule） 对线程interrupt()方法的调用Happens-Before被中断线程的代码检测到中断事件的发生，可以通过Thread.interrupt()方法检测到是否有中断发生。
-
 * 对象终结规则（Finalizer Rule） 一个对象的初始化完成（构造函数执行结束）Happens-Before它的finalize()方法的开始。
-
 * 传递性（Transitivity） 偏序关系的传递性：如果已知hb(a,b)和hb(b,c)，那么我们可以推导出hb(a,c)，即操作a Happens-Before 操作c。
 
 这些规则都很好理解，在这里就不进行过多的解释了。 Java语言中无需任何同步手段保障就能成立的先行发生规则就只有上面这些了。
@@ -127,7 +120,7 @@ volatile采取的措施其实很好理解：只要被volatile修饰的变量被�
 
 这个问题稍稍有点复杂，要结合汇编代码观察有无volatile时的区别。 下面结合《深入理解Java虚拟机》第370页的例子（本想自己生成汇编代码，无奈操作有点复杂）：
 
-![](https://xflovemoney.github.io/images/blog/20161213113320688.jpg)
+![](https://xflovemoney.github.io/images/blog/20161213113320688.jpeg)
 
 
 图中标红的lock指令是只有在被volatile修饰时才会出现，至于作用，书中是这样解释的：这个操作相当于一个内存屏障（Memory Barrier，重排序时不能把后面的指令重排序到内存屏障之前的位置），只有一个CPU访问内存时，并不需要内存屏障；但如果有两个或者更多CPU访问同一块内存，且其中有一个在观测另一个，就需要内存屏障来保证一致性了。 重复一下：指令重排序在任何时候都有可能发生，与是否为多线程无关，之所以在单线程下感觉没有发生重排序，是因为线程内表现为串行的语义的存在。
